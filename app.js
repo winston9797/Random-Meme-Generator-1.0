@@ -6,29 +6,17 @@ const meme = fetch('https://meme-api.herokuapp.com/gimme').then(res =>{
 }).then(data =>{
     //getting url and stting into an img
     console.log(data.url);
-    const img = document.createElement('img');
-    img.setAttribute('src',data.url);
-    img.style.height = '500px';
-    document.body.appendChild(img);
+    document.getElementById('output').setAttribute('src',data.url);
+    document.getElementById('output').style.height = '500px';
+    document.getElementById('output').style.margin = '0 auto';
 }).catch(error => {
     //in case of error we can console log the error my own log message
-    console.log(error);
-    console.log('field to load data');
+    alert(error);
 });;
 
+document.getElementById('new').addEventListener('click',function(e){
+    console.log('click');
+    location.reload();
+    e.preventDefault();
+});
 
-// async function getMeme(){
-//     try {
-//         const meme = await fetch('https://meme-api.herokuapp.com/gimme');
-//         const data = await meme.json();
-//         const img = document.createElement('img');
-//         img.setAttribute('src',data.url);
-//         img.style.height = '500px';
-//         document.body.appendChild(img);
-//         console.log(data);
-//     }catch(error){
-//         console.log('ur meme was not found');
-//     }
-// }
-
-// getMeme();
